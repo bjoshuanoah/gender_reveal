@@ -38,10 +38,14 @@ app.post('/api/users/create', users.create);
 app.post('/api/users/login/', users.login);
 
 app.post('/api/events/find_event/', events.findEvent);
+app.get('/api/events/get_event/:name', events.getEvent);
 app.get('/api/events/vote_girl/:event_id/:name/:user_id', events.voteGirl);
 app.get('/api/events/vote_boy/:event_id/:name/:user_id', events.voteBoy);
 app.post('/api/events/create', events.createEvent);
 
+app.get('/:anything', function (req, res) {
+    res.render('index.html');
+});
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });

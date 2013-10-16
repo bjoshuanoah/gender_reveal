@@ -14,7 +14,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
   $routeProvider.when('/:child', {
     templateUrl: '/src/app/views/home.ng',
-    controller: 'ChildController'
+    controller: 'EventController'
   });  
  
   $routeProvider.otherwise({ redirectTo: '/' });

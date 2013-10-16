@@ -38,11 +38,30 @@ exports.findEvent = function (req, res) {
 	});
 }
 
-exports.updateEvent = function (req, res) {
-	console.log('updating event');
-	console.log(req.params);
-	res.json({'Event': 'The Noahs'})
+
+exports.getEvent = function (req, res) {
+	var name = req.params.name;
+	db.events.find({name: name}, function (error, response) {
+
+		if (error) {
+			res.json({
+				400 : {
+					error: "Search Not Found" 
+				}
+			})
+		} else {
+			response[0].boy_votes_length = response[0].boy_votes.length
+			response[0].girl_votes_length = response[0].girl_votes.length
+			res.send(response);
+		}
+	});
 }
+
+// exports.updateEvent = function (req, res) {
+// 	console.log('updating event');
+// 	console.log(req.params);
+// 	res.json({'Event': 'The Noahs'})
+// }
 
 exports.voteGirl = function (req, res) {
 	var event_id = req.params.event_id;

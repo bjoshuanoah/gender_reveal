@@ -14,3 +14,13 @@ app.factory("AuthenticationService", ['$location', function($location) {
     }
   };
 }]);
+
+app.factory('apiCall', ['$http', function($http) {
+   return {
+        getEvent: function(event_name) {
+             //return the promise directly.
+            return $http.get('/api/events/get_event/' + event_name)
+                 
+        }
+   }
+}]);

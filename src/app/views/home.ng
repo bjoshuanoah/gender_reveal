@@ -1,22 +1,14 @@
 <div id="home" class="row">
   <div class="large-6 large-offset-3">
-    <h2>Welcome to the {{ title }} page!</h2>
-
-    <div class="alert-box">{{ message }}</div>
-
+    <h2>{{ title }}</h2>
     <ul class="small-block-grid-2">
       <li>
-        <img class="th" src="www/img/demo1.jpg" shows-message-when-hovered message="Im the first house.">
+        Girl Votes: {{girl_votes_length}}
       </li>
       <li>
-        <img class="th" src="www/img/demo2.jpg" shows-message-when-hovered message="Im the second house.">
+        Boy Votes: {{boy_votes_length}}
       </li>
     </ul>
-
-    <div class="row">
-      <div class="large-12 columns">
-        <button class="button large expand radius" ng-click="logout()">Log Out</button>
-      </div>
-    </div>
+    <div id="graph"></div>
   </div>
 </div>

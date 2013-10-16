@@ -1,50 +1,3 @@
-var app = angular.module("app", [])
-
-app.factory("AuthenticationService", ['$location', function($location) {
-  return {
-    login: function(credentials) {
-      if (credentials.username !== "ralph" || credentials.password !== "wiggum") {
-        alert("Username must be 'ralph', password must be 'wiggum'");
-      } else {
-        $location.path('/');
-      }
-    },
-    logout: function() {
-      $location.path('/login');
-    }
-  };
-}]);
-
-app.factory('apiCall', ['$http', function($http) {
-   return {
-        getEvent: function(event_name) {
-             //return the promise directly.
-            return $http.get('/api/events/get_event/' + event_name)
-                 
-        }
-   }
-}]);
-app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-
-  $locationProvider.html5Mode(true);
-
-  $routeProvider.when('/', {
-    templateUrl: '/src/app/views/home.ng',
-    controller: 'HomeController'
-  });
- 
-  $routeProvider.when('/login', {
-    templateUrl: '/src/app/views/login.ng',
-    controller: 'LoginController'
-  }); 
-
-  $routeProvider.when('/:child', {
-    templateUrl: '/src/app/views/home.ng',
-    controller: 'EventController'
-  });  
- 
-  $routeProvider.otherwise({ redirectTo: '/' });
-}]);
 app.controller("EventController", ['$scope', '$location', 'apiCall', function($scope, $location, apiCall) {
 	$scope.girl_votes_length = 0;
 	$scope.boy_votes_length = 0;
@@ -95,18 +48,3 @@ app.controller("EventController", ['$scope', '$location', 'apiCall', function($s
 	});
 	
 }]);    
-app.controller("HomeController", ['$scope', 'AuthenticationService', function($scope, AuthenticationService) {
-  $scope.title = "Awesome Home";
-  $scope.message = "Mouse Over these images to see a directive at work!";
-
-  $scope.logout = function() {
-    AuthenticationService.logout();
-  };
-}]); 
-app.controller("LoginController", ['$scope', '$location', 'AuthenticationService', function($scope, $location, AuthenticationService) {
-  $scope.credentials = { username: "", password: "" };
-
-  $scope.login = function() {
-    AuthenticationService.login($scope.credentials);
-  }
-}]);
