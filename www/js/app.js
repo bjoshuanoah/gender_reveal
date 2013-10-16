@@ -47,7 +47,7 @@ app.controller("HomeController", ['$scope', 'AuthenticationService', function($s
   $scope.logout = function() {
     AuthenticationService.logout();
   };
-}]);
+}]); 
 app.controller("LoginController", ['$scope', '$location', 'AuthenticationService', function($scope, $location, AuthenticationService) {
   $scope.credentials = { username: "", password: "" };
 

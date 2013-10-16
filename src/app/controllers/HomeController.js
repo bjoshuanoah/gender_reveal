@@ -5,4 +5,4 @@ app.controller("HomeController", ['$scope', 'AuthenticationService', function($s
   $scope.logout = function() {
     AuthenticationService.logout();
   };
-}]);
+}]); 
