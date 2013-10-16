@@ -6,7 +6,7 @@ app.factory("AuthenticationService", ['$location', function($location) {
       if (credentials.username !== "ralph" || credentials.password !== "wiggum") {
         alert("Username must be 'ralph', password must be 'wiggum'");
       } else {
-        $location.path('/home');
+        $location.path('/');
       }
     },
     logout: function() {
