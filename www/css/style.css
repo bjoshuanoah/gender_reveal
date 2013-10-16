@@ -1,0 +1,16 @@
+/*! Gender-Reveal - 1.0.0 - 2013-10-16 */
+
+/* line 1, ../../src/sass/style.scss */
+h1, h2, h3, h4, h5 {
+  text-align: center;
+}
+
+/* line 5, ../../src/sass/style.scss */
+button {
+  margin-bottom: 0px !important;
+}
+
+/* line 9, ../../src/sass/style.scss */
+body {
+  background: #fff;
+}
