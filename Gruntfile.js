@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     },
     concat: {   
         dev: {
-            src: ['src/app/app.js', 'src/app/router.js','src/app/controllers/*.js'],
+            src: ['src/app/app.js', 'src/app/router.js','src/app/**/*.js'],
             dest: 'www/js/app.js'
         }
     },

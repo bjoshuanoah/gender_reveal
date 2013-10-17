@@ -1,29 +1,7 @@
 var app = angular.module("app", [])
 
-app.factory("AuthenticationService", ['$location', function($location) {
-  return {
-    login: function(credentials) {
-      if (credentials.username !== "ralph" || credentials.password !== "wiggum") {
-        alert("Username must be 'ralph', password must be 'wiggum'");
-      } else {
-        $location.path('/');
-      }
-    },
-    logout: function() {
-      $location.path('/login');
-    }
-  };
-}]);
 
-app.factory('apiCall', ['$http', function($http) {
-   return {
-        getEvent: function(event_name) {
-             //return the promise directly.
-            return $http.get('/api/events/get_event/' + event_name)
-                 
-        }
-   }
-}]);
+
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true);
@@ -38,62 +16,76 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     controller: 'LoginController'
   }); 
 
-  $routeProvider.when('/:child', {
-    templateUrl: '/src/app/views/home.ng',
+  $routeProvider.when('/:event', {
+    templateUrl: '/src/app/views/event.ng',
     controller: 'EventController'
   });  
  
   $routeProvider.otherwise({ redirectTo: '/' });
 }]);
 app.controller("EventController", ['$scope', '$location', 'apiCall', function($scope, $location, apiCall) {
-	$scope.girl_votes_length = 0;
-	$scope.boy_votes_length = 0;
-  	var event_name = $location.path().replace('/', ''); 
+	var chart_element = document.getElementById("myChart").getContext("2d"),
+		$chart = $('#myChart'),
+		$event_info = $('#event_info'),
+  		event_name = $location.path().replace('/', ''); 
+  	$scope.event_url = event_name;
+	genderChart = new Chart(chart_element);
+	$scope.vote = function (e, gender) {
+		var $this = $(e.target);
+		$scope.voted = true;
+		console.log(gender);
+		var user_id = FB.getUserID()
+		console.log(user_id);
+		if (user_id.length === 0) {
+			FB.login(function (response) {
+				console.log(response);
+			}, {scope:'email, user_likes, user_checkins, user_birthday, publish_stream'});
+		}
+	}
+
+	options = {
+		segmentShowStroke : true,
+		segmentStrokeColor : "#fff",
+		segmentStrokeWidth : 5,
+		animation : true,
+		animationSteps : 100,
+		// animationEasing : "easeOutQuart",
+		animateRotate : true,
+		animateScale : true,
+		onAnimationComplete : null
+	};
   	apiCall.getEvent(event_name).then(function(result) {
   		angular.extend($scope, result.data[0]);
-  		var w = 300,                        //width
-	    h = 300,                            //height
-	    r = 100,                            //radius
-	    color = d3.scale.category20c();     //builtin range of colors
-	 
-	    data = [{"label":"Girl Votes", "value":$scope.girl_votes_length}, 
-	            {"label":"Boy Votes", "value":$scope.boy_votes_length}];
-	    
-	    var vis = d3.select("#graph")
-	        .append("svg:svg")              //create the SVG element inside the <body>
-	        .data([data])                   //associate our data with the document
-	            .attr("width", w)           //set the width and height of our visualization (these will be attributes of the <svg> tag
-	            .attr("height", h)
-	        .append("svg:g")                //make a group to hold our pie chart
-	            .attr("transform", "translate(" + r + "," + r + ")")    //move the center of the pie chart from 0, 0 to radius, radius
-	 
-	    var arc = d3.svg.arc()              //this will create <path> elements for us using arc data
-	        .outerRadius(r);
-	 
-	    var pie = d3.layout.pie()           //this will create arc data for us given a list of values
-	        .value(function(d) { return d.value; });    //we must tell it out to access the value of each element in our data array
-	 
-	    var arcs = vis.selectAll("g.slice")     //this selects all <g> elements with class slice (there aren't any yet)
-	        .data(pie)                          //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties) 
-	        .enter()                            //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
-	            .append("svg:g")                //create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
-	                .attr("class", "slice");    //allow us to style things in the slices (like text)
-	 
-	        arcs.append("svg:path")
-	                .attr("fill", function(d, i) { return color(i); } ) //set the color for each slice to be chosen from the color function defined above
-	                .attr("d", arc);                                    //this creates the actual SVG path using the associated data (pie) with the arc drawing function
-	 
-	        arcs.append("svg:text")                                     //add a label to each slice
-	                .attr("transform", function(d) {                    //set the label's origin to the center of the arc
-	                //we have to make sure to set these before calling arc.centroid
-	                d.innerRadius = 0;
-	                d.outerRadius = r;
-	                return "translate(" + arc.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
-	            })
-	            .attr("text-anchor", "middle")                          //center the text on it's origin
-	            .text(function(d, i) { return data[i].label; });        //get the label from our original data array
+  		$chart.css({"max-height": (window.innerHeight - 40)+"px", "max-width": (window.innerHeight - 40)+"px"});
+  		$scope.chart_data = [
+  			{
+  				value: $scope.boy_votes_length,
+  				color: "rgb(156, 206, 255)"
+  			},
+  			{
+  				value: $scope.girl_votes_length,
+  				color: "rgb(255, 190, 190)"
+  			},
+  		];
+  		if ($scope.chart_type === 'Doughnut') {
+	  		genderChart.Doughnut($scope.chart_data, options);
+  		} else if ($scope.chart_type === "Pie") {
+  			genderChart.Pie($scope.chart_data, options);
+  		}
+  		setTimeout(function() {
+  			if (window.innerWidth >767) {
+		  		$event_info.animate({"top": ((window.innerHeight - 40)- $event_info.outerHeight())/2 + 'px'});
+		  	}
+  		},20)
 	});
-	
+	$(window).resize(function () {
+		if (window.innerWidth >767) {
+			$event_info.css({"margin-top": ((window.innerHeight - 40)- $event_info.outerHeight())/2 + 'px'});
+		} else {
+			$event_info.css({"margin-top": '0'});
+		}
+		$chart.css({"max-height": (window.innerHeight - 40)+"px", "max-width": (window.innerHeight - 40)+"px"});
+	})
 }]);    
 app.controller("HomeController", ['$scope', 'AuthenticationService', function($scope, AuthenticationService) {
   $scope.title = "Awesome Home";
@@ -110,3 +102,119 @@ app.controller("LoginController", ['$scope', '$location', 'AuthenticationService
     AuthenticationService.login($scope.credentials);
   }
 }]);
+app.factory('apiCall', ['$http', function($http) {
+   return {
+        getEvent: function(event_name) {
+            return $http.get('/api/events/get_event/' + event_name)
+        }
+   }
+}]);
+app.factory("AuthenticationService", ['$location', function($location) {
+  return {
+    login: function(credentials) {
+      if (credentials.username !== "ralph" || credentials.password !== "wiggum") {
+        alert("Username must be 'ralph', password must be 'wiggum'");
+      } else {
+        $location.path('/');
+      }
+    },
+    logout: function() {
+      $location.path('/login');
+    }
+  };
+}]);
+// app.factory("AuthenticationService", ['$location', function($location) {
+// }
+
+
+
+// if (window.location.host.indexOf('egood.com') > -1){
+// 			var app_id = '139225949507622';
+// 			var channel_url = 'http://www.egood.com/channel.html'
+// 		} else if (window.location.host.indexOf('egood4.us') > -1){
+// 			var app_id = '461056347268149';
+// 			var channel_url = 'https://www.egood4.us/channel.html'
+// 		} else if (window.location.host.indexOf('egood4.me') > -1){
+// 			var app_id = '497049573689364';
+// 			var channel_url = 'https://www.egood4.me/channel.html'
+// 		} else if (window.location.host.indexOf('noah') > -1){
+// 			var app_id = '249283498531572';
+// 			var channel_url = 'http://noah.local/channel.html'
+// 		} else if (window.location.host.indexOf('etan') > -1){
+// 			var app_id = '576021652413251';
+// 			var channel_url = 'http://me.etan/channel.html';
+// 		}else if (window.location.host.indexOf('1.115') > -1){
+// 			var app_id = '371935796236712';
+// 			var channel_url = 'http://192.168.1.115/channel.html'
+// 		}else if (window.location.host.indexOf('jacob') > -1){
+// 			var app_id = '337178103048702';
+// 			var channel_url = 'http://us.jacoblocal/channel.html'
+// 		}
+// 		$.getScript('https://connect.facebook.net/en_US/all.js','FB',function(){
+
+// 			if(window.fbInit!=true){
+// 				window.fbInit=true;
+// 				FB.init({
+// 					appId: app_id,
+// 					channelUrl : channel_url,
+// 					status:true,
+// 					cookie:false,
+// 					xfbml:true
+// 				});
+// 			}
+
+
+// 		    (function(d, s, id) {
+// 				var js, fjs = d.getElementsByTagName(s)[0];
+// 				if (d.getElementById(id)) return;
+// 				js = d.createElement(s); js.id = id;
+// 				js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=" + app_id + "";
+// 				fjs.parentNode.insertBefore(js, fjs);
+// 		    }(document, 'script', 'facebook-jssdk'));
+
+
+// 	        FB.login(function (response) {
+// 				if (response.authResponse) {
+// 					var obj = {}
+// 			    	obj.mobile_login = true;
+// 			    	obj.access_token = response.authResponse.accessToken;
+// 			    	obj.fb_userid = response.authResponse.userID;
+
+// 			    	$.ajax({
+// 						type: 'POST',
+// 						dataType: 'json',
+// 						beforeSend: function(xhr){apiKeys(xhr)},
+// 						url: '/json/social/login',
+// 						data: {'0-data':JSON.stringify(obj)},
+// 						error: function (e) {
+// 							console.log('error', e.responseText);
+// 						},
+// 						success: function (s) {
+// 							var success = s['0-data'];
+// 					    	if (success.user_id != undefined) {
+// 								elem.removeClass('connecting')
+// 								if (elem.hasClass('login')){
+// 									var cookie = cookies.grab('eData');
+// 									seo.go('/' + cookie.username);
+// 								} else {
+// 									elem.addClass('facebook_30-hover');
+// 								}
+// 					    	} else {
+// 					    		elem.removeClass('connecting');
+// 					    		shakeThis($('#shaker'));
+// 					    	}
+// 					    	if (func) {
+// 					    		func(success);
+// 					    	}
+// 						}
+// 					});
+// 	            }else{
+// 	            	func(null);
+// 	            }
+// 	        }, {scope:'email, user_likes, user_checkins, user_birthday, publish_stream'});
+// 		}):
+
+
+
+
+

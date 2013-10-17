@@ -1,5 +1,14 @@
+$white: #fff;
+$green: #BCD695;
+$girl: rgb(255, 190, 190);
+$boy: rgb(156, 206, 255);
+
+@import "compass/css3";
+
 h1,h2,h3,h4,h5 {
   text-align: center;
+  font-family: HelveticaNeue-Light, Helvetica Neue Light;
+  font-weight: normal;
 }
 
 button {
@@ -7,5 +16,86 @@ button {
 }
 
 body {
-	background: #fff;
+	font-size: 16px;
+	background: $green;
+	font-family: HelveticaNeue-Light, Helvetica Neue Light;
+}
+
+* {
+    box-sizing: border-box;
+    position: relative;
+    outline: none;
+}
+
+.boy {
+	color: $boy;
+}
+.girl {
+	color : $girl;
+}
+#event_view {
+	padding:20px;
+	margin: 0;
+	color: $white;
+	@media (max-width: 767px) {
+		margin-top: 0 !important;
+		top: 0 !important;
+	}
+	h1 {
+		font-size: 53px;
+		line-height: 60px;
+		margin: 0 0 15px;
+		color: $white;
+	}
+	h2 {
+		color:$white;
+		margin: 25px 0 5px;
+	}
+	.vote_count {
+		font-size: 25px;
+		background: rgba($white, .5);
+		padding: 10px;
+		text-align: center;
+		.vote_number {
+			// font-family: Times;
+			font-size: 100px;
+			text-shadow: 0 0 2px $white;
+		}
+	}
+	#event_vote {
+		div {
+			padding: 0;
+		}
+		button {
+			width: 100%;
+			height:80px;
+			border: 0;
+			font-size: 32px;
+			@include transition(background .3s);
+			&.vote_boy {
+				background: $boy;
+				&:hover {
+					background: darken($boy, 3%);
+				}
+				&:active {
+					background: darken($boy, 5%);
+				}
+			}
+			&.vote_girl {
+				background: $girl;
+				&:hover {
+					background: darken($girl, 3%);
+				}
+				&:active {
+					background: darken($girl, 5%);
+				}
+			}
+		}
+	}
+}
+#myChart {
+	width: 100% !important;
+	height: auto !important;
+	display: block;
+	margin: 0 auto;
 }

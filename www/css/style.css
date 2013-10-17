@@ -1,16 +1,122 @@
-/*! Gender-Reveal - 1.0.0 - 2013-10-16 */
+/*! Gender-Reveal - 1.0.0 - 2013-10-17 */
 
-/* line 1, ../../src/sass/style.scss */
+/* line 8, ../../src/sass/style.scss */
 h1, h2, h3, h4, h5 {
   text-align: center;
+  font-family: HelveticaNeue-Light, Helvetica Neue Light;
+  font-weight: normal;
 }
 
-/* line 5, ../../src/sass/style.scss */
+/* line 14, ../../src/sass/style.scss */
 button {
   margin-bottom: 0px !important;
 }
 
-/* line 9, ../../src/sass/style.scss */
+/* line 18, ../../src/sass/style.scss */
 body {
-  background: #fff;
+  font-size: 16px;
+  background: #bcd695;
+  font-family: HelveticaNeue-Light, Helvetica Neue Light;
+}
+
+/* line 24, ../../src/sass/style.scss */
+* {
+  box-sizing: border-box;
+  position: relative;
+  outline: none;
+}
+
+/* line 30, ../../src/sass/style.scss */
+.boy {
+  color: #9cceff;
+}
+
+/* line 33, ../../src/sass/style.scss */
+.girl {
+  color: #ffbebe;
+}
+
+/* line 36, ../../src/sass/style.scss */
+#event_view {
+  padding: 20px;
+  margin: 0;
+  color: white;
+}
+@media (max-width: 767px) {
+  /* line 36, ../../src/sass/style.scss */
+  #event_view {
+    margin-top: 0 !important;
+    top: 0 !important;
+  }
+}
+/* line 44, ../../src/sass/style.scss */
+#event_view h1 {
+  font-size: 53px;
+  line-height: 60px;
+  margin: 0 0 15px;
+  color: white;
+}
+/* line 50, ../../src/sass/style.scss */
+#event_view h2 {
+  color: white;
+  margin: 25px 0 5px;
+}
+/* line 54, ../../src/sass/style.scss */
+#event_view .vote_count {
+  font-size: 25px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  text-align: center;
+}
+/* line 59, ../../src/sass/style.scss */
+#event_view .vote_count .vote_number {
+  font-size: 100px;
+  text-shadow: 0 0 2px white;
+}
+/* line 66, ../../src/sass/style.scss */
+#event_view #event_vote div {
+  padding: 0;
+}
+/* line 69, ../../src/sass/style.scss */
+#event_view #event_vote button {
+  width: 100%;
+  height: 80px;
+  border: 0;
+  font-size: 32px;
+  -webkit-transition: background 0.3s;
+  -moz-transition: background 0.3s;
+  -o-transition: background 0.3s;
+  transition: background 0.3s;
+}
+/* line 75, ../../src/sass/style.scss */
+#event_view #event_vote button.vote_boy {
+  background: #9cceff;
+}
+/* line 77, ../../src/sass/style.scss */
+#event_view #event_vote button.vote_boy:hover {
+  background: #8dc6ff;
+}
+/* line 80, ../../src/sass/style.scss */
+#event_view #event_vote button.vote_boy:active {
+  background: #83c1ff;
+}
+/* line 84, ../../src/sass/style.scss */
+#event_view #event_vote button.vote_girl {
+  background: #ffbebe;
+}
+/* line 86, ../../src/sass/style.scss */
+#event_view #event_vote button.vote_girl:hover {
+  background: #ffafaf;
+}
+/* line 89, ../../src/sass/style.scss */
+#event_view #event_vote button.vote_girl:active {
+  background: #ffa4a4;
+}
+
+/* line 96, ../../src/sass/style.scss */
+#myChart {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
 }

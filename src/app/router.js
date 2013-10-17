@@ -12,8 +12,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     controller: 'LoginController'
   }); 
 
-  $routeProvider.when('/:child', {
-    templateUrl: '/src/app/views/home.ng',
+  $routeProvider.when('/:event', {
+    templateUrl: '/src/app/views/event.ng',
     controller: 'EventController'
   });  
  
