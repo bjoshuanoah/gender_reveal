@@ -26,7 +26,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   $locationProvider.html5Mode(true);
 
   $routeProvider.when('/', {
-    templateUrl: '/src/app/views/login.ng',
+    templateUrl: '/src/app/views/home.ng',
     controller: 'HomeController'
   });
  
@@ -148,8 +148,8 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 											  method: 'feed',
 											  picture: 'http://www.losangelesweddingphotography.org/wp-content/uploads/2013/10/itsa' + gender + '.jpg',
 											  link: 'http://guessthesex.co/' + $scope.name,
-											  Title: 'Guess the sex of the ' + $scope.mothers_last_name + ' baby.',
-											  caption: 'I guessed it will be a ' + gender + '! Guess with me, or create your own gender guessing event.',
+											  title: 'Guess the sex of the ' + $scope.mothers_last_name + ' baby.',
+											  caption: 'I guessed baby ' + $scope.mothers_last_name + ' will be a ' + gender + '! Guess with me, or create your own gender guessing event.',
 											}, function(response){
 												console.log('posted link');
 											});
@@ -176,9 +176,9 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 					FB.ui({
 					  method: 'feed',
 					  picture: 'http://www.losangelesweddingphotography.org/wp-content/uploads/2013/10/itsa' + gender + '.jpg',
-					  link: 'http://guessthesex.co/' + $scope.name,
-					  Title: 'Guess the sex of the ' + $scope.mothers_last_name + ' baby.',
-					  caption: 'I guessed it will be a ' + gender + '! Guess with me, or create your own gender guessing event.',
+					  link: 'http://www.guessthesex.co/' + $scope.name,
+					  title: 'Guess the sex of the ' + $scope.mothers_last_name + ' baby.',
+					  caption: 'I guessed baby ' + $scope.mothers_last_name + ' will be a ' + gender + '! Guess with me, or create your own gender guessing event.',
 					}, function(response){
 						console.log('posted link');
 					});
