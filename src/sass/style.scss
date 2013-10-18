@@ -42,9 +42,17 @@ body {
 	color : $girl;
 }
 
+h1 {
+	color: $white;
+	font-size:60px;
+
+}
 #home {
 	max-width: 62.5em !important;
-	margin: 0 auto;
+	margin: 30px auto;
+	h2 {
+		color:$white;
+	}
 	.search_events {
 		.search_fields {
 			padding:0;
@@ -134,7 +142,7 @@ body {
 		}
 	}
 }
-#myChart {
+#myChart, #homePageChart {
 	width: 100% !important;
 	height: auto !important;
 	display: block;

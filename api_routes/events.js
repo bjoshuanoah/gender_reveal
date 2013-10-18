@@ -2,6 +2,18 @@ var databaseUrl = "bjoshuanoah:qwert1@paulo.mongohq.com:10021/gender_reveal",
     collections = ["users", "events"],
     db = require("mongojs").connect(databaseUrl, collections);
 
+//create event
+//must have
+// {
+// 	chart_type: "Pie" || "Doughnut,
+// 	due_date: ts,
+// 	fathers_first_name: string,
+// 	fathers_last_name: string,
+// 	mothers_first_name: string,
+// 	mothers_last_name: string,
+// 	name: url_name - string,
+// 	title: string"
+// }
 exports.createEvent = function (req, res) {
 	var new_event_obj = req.body;
 	new_event_obj.voted_users=[];
@@ -21,6 +33,7 @@ exports.createEvent = function (req, res) {
 	});
 }
 
+// Search by parents names
 exports.findEvent = function (req, res) {
 	var search_terms = req.body;
 	db.events.find(search_terms).limit(20, function (error, response) {
@@ -37,7 +50,7 @@ exports.findEvent = function (req, res) {
 	});
 }
 
-
+// Have event_url_name
 exports.getEvent = function (req, res) {
 	var name = req.params.name;
 	db.events.find({name: name}, function (error, response) {

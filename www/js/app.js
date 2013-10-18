@@ -224,7 +224,7 @@ app.controller("HomeController", ['$scope', '$location', 'AuthenticationService'
 	scope = $scope;
 	$scope.search_results = [];
 	$scope.logout = function() {
-	AuthenticationService.logout();
+		AuthenticationService.logout();
 	};
 
 	$scope.goToEvent = function (e) {
@@ -256,7 +256,45 @@ app.controller("HomeController", ['$scope', '$location', 'AuthenticationService'
 			})
 		}
 	}
+	var chart_element = document.getElementById("homePageChart").getContext("2d"),
+		$chart = $('#homePageChart');
+	homePageChart = new Chart(chart_element);
+	options = {
+		segmentShowStroke : true,
+		segmentStrokeColor : "#fff",
+		segmentStrokeWidth : 5,
+		animation : true,
+		animationSteps : 100,
+		// animationEasing : "easeOutQuart",
+		animateRotate : true,
+		animateScale : true,
+		onAnimationComplete : null
+	};
+	$scope.chart_data = [
+		{
+			value: 15,
+			color: "rgb(156, 206, 255)"
+		},
+		{
+			value: 22,
+			color: "rgb(255, 190, 190)"
+		},
+	];
+	homePageChart.Doughnut($scope.chart_data, options);
+	
 }]); 
+
+
+
+
+
+
+
+
+
+
+
+
 app.controller("LoginController", ['$scope', '$location', 'AuthenticationService', function($scope, $location, AuthenticationService) {
   $scope.credentials = { username: "", password: "" };
 

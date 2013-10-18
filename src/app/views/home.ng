@@ -1,8 +1,13 @@
+<div class="large-12 columns">
+	<h1>Guess the Sex</h1>
+</div>
 <div id="home" class="row">
 	<div class="large-6 columns">
+		<canvas id="homePageChart" width="1200" height="1200"></canvas>
 	</div>
 	<div class="large-6 columns">
 		<div class="login">
+
 		</div>
 		<div class="search_events">
 			<h2>Search for a baby</h2>
@@ -26,7 +31,7 @@
 				<span>{{search_result.title}}</span>
 			</div>
 		</div>
-		<div id="create_event">
+		<div id="create_event" ng-show>
 			<button>Create a Gender Poll</button>
 		</div>
 	</div>
