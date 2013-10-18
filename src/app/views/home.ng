@@ -8,17 +8,22 @@
 			<h2>Search for a baby</h2>
 			<div class="row search_fields">
 				<div class="large-6 columns">
-					<input placeholder="Mother's First Name">
+					<input placeholder="Mother's First Name" ng-keyup="search()" ng-model="search_mothers_first_name">
 				</div>
 				<div class="large-6 columns">
-					<input placeholder="Mother's Last Name">
+					<input placeholder="Mother's Last Name" ng-keyup="search()" ng-model="search_mothers_last_name">
 				</div>
 				<div class="large-6 columns">
-					<input placeholder="Father's First Name">
+					<input placeholder="Father's First Name" ng-keyup="search()" ng-model="search_fathers_first_name">
 				</div>
 				<div class="large-6 columns">
-					<input placeholder="Father's Last Name">
+					<input placeholder="Father's Last Name" ng-keyup="search()" ng-model="search_fathers_last_name">
 				</div>
+			</div>
+		</div>
+		<div id="search_results_container">
+			<div class="search_result" ng-repeat="search_result in search_results" ng-click="goToEvent($event)" id="{{search_result.name}}">
+				<span>{{search_result.title}}</span>
 			</div>
 		</div>
 		<div id="create_event">

@@ -70,9 +70,7 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 	$scope.vote = function (e, gender) {
 		var $this = $(e.target);
 		$scope.voted = true;
-		console.log(gender);
 		var user_id = FB.getUserID()
-		console.log(user_id);
 		if (user_id.length === 0) {
 			FB.login(function (response) {
 				if (response.status === 'connected') {
@@ -124,10 +122,10 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 		} else {
 			var vote_obj = {};
 			vote_obj.event_id = $scope._id;
-			vote_obj.first_name = local.get('user').first_name;
-			vote_obj.user_id = local.get('user').user_id;
-			apiCall.vote(vote_obj, gender)
-				.then(function () {
+			if (local.get('user')){
+				vote_obj.first_name = local.get('user').first_name;
+				vote_obj.user_id = local.get('user').user_id;
+				apiCall.vote(vote_obj, gender).then(function () {
 					$scope.getEvent();
 					FB.ui({
 					  method: 'feed',
@@ -139,6 +137,34 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 						console.log('posted link');
 					});
 				});
+			} else {
+				FB.api('/me', function(user) {
+					obj.first_name = user.first_name;
+					obj.last_name = user.last_name;
+					obj.user_id = user.id;
+					obj.email = user.email;
+					obj.gender = user.gender;
+					obj.birthday = user.birthday;
+					if (typeof user.location !== undefined) {
+						obj.location = user.location.name;
+					}
+					local.write('user', obj);
+					vote_obj.first_name = local.get('user').first_name;
+					vote_obj.user_id = local.get('user').user_id;
+					apiCall.vote(vote_obj, gender).then(function () {
+						$scope.getEvent();
+						FB.ui({
+						  method: 'feed',
+						  picture: 'http://www.losangelesweddingphotography.org/wp-content/uploads/2013/10/itsa' + gender + '.jpg',
+						  link: 'http://www.guessthesex.co/' + $scope.name,
+						  title: 'Guess the sex of the ' + $scope.mothers_last_name + ' baby.',
+						  caption: 'I guessed baby ' + $scope.mothers_last_name + ' will be a ' + gender + '! Guess with me, or create your own gender guessing event.',
+						}, function(response){
+							console.log('posted link');
+						});
+					});
+				});
+			}
 		}
 	};
 	$(window).resize(function () {

@@ -3,6 +3,9 @@ app.factory('apiCall', ['$http', function($http) {
         getEvent: function (event_name) {
             return $http.get('/api/events/get_event/' + event_name)
         },
+        findEvent: function (search_params) {
+        	return $http.post('/api/events/find_event/', search_params);
+        },
         vote: function (event_info, gender) {
         	if (gender === 'boy') {
         		return $http.get('/api/events/vote_boy/' + event_info.event_id + '/' + event_info.first_name +'/' + event_info.user_id);

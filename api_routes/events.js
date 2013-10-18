@@ -32,7 +32,6 @@ exports.findEvent = function (req, res) {
 				}
 			})
 		} else {
-			console.log('success')
 			res.send(response);
 		}
 	});
