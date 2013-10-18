@@ -180,6 +180,7 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 				});
 			} else {
 				FB.api('/me', function(user) {
+					var obj = {}
 					obj.first_name = user.first_name;
 					obj.last_name = user.last_name;
 					obj.user_id = user.id;
