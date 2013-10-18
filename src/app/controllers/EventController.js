@@ -84,9 +84,6 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 						obj.email = user.email;
 						obj.gender = user.gender;
 						obj.birthday = user.birthday;
-						if (typeof user.location !== undefined) {
-							obj.location = user.location.name;
-						}
 						local.write('user', obj);
 						$scope.$apply(function() {
 							apiCall.createUser(obj)
@@ -145,9 +142,6 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 					obj.email = user.email;
 					obj.gender = user.gender;
 					obj.birthday = user.birthday;
-					if (typeof user.location !== undefined) {
-						obj.location = user.location.name;
-					}
 					local.write('user', obj);
 					vote_obj.first_name = local.get('user').first_name;
 					vote_obj.user_id = local.get('user').user_id;
