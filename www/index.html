@@ -7,22 +7,17 @@
     <link rel="stylesheet" href="vendor/css/foundation.min.css">
 </head>
 <body>
-    <div id="view" class="row" style="width:100%; max-width: 100%;" ng-view></div>
     <div id="fb-root"></div>
+    <div id="view" class="row" style="width:100%; max-width: 100%;" ng-view></div>
     <script>
       window.fbAsyncInit = function() {
-        // init the FB JS SDK
         FB.init({
-          appId      : '437537973034180',                        // App ID from the app dashboard
-          channelUrl : '//guessthesex.co/channel.html', // Channel file for x-domain comms
-          status     : true,                                 // Check Facebook Login status
-          xfbml      : true                                  // Look for social plugins on the page
+            appId      : '437537973034180',
+            channelUrl : '//guessthesex.co/channel.html',
+            status     : true,
+            xfbml      : true
         });
-
-        // Additional initialization code such as adding Event Listeners goes here
       };
-
-      // Load the SDK asynchronously
       (function(d, s, id){
          var js, fjs = d.getElementsByTagName(s)[0];
          if (d.getElementById(id)) {return;}

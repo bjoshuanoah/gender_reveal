@@ -11,7 +11,7 @@
                 <span class="vote_number boy">{{boy_votes_length}}</span>
             </div>
         </div>
-        <div id="event_vote" class="row" ng-if="!fullscreen && title && !voted">
+        <div id="event_vote" class="row" ng-show="!fullscreen && title && !voted">
             <h2>What do you think?</h2>
             <div class="large-6 columns">
                 <button class="vote_girl" ng-click="vote($event, 'girl')">Girl</button>
@@ -28,3 +28,4 @@
         <canvas id="myChart" width="1200" height="1200"></canvas>
     </div>
 </div>
+

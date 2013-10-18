@@ -3,7 +3,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   $locationProvider.html5Mode(true);
 
   $routeProvider.when('/', {
-    templateUrl: '/src/app/views/home.ng',
+    templateUrl: '/src/app/views/login.ng',
     controller: 'HomeController'
   });
  

@@ -34,8 +34,9 @@ app.get('/', function (req, res) {
     res.render('index.html');
 });
 
-app.post('/api/users/create', users.create);
+app.post('/api/users/create/', users.create);
 app.post('/api/users/login/', users.login);
+app.get('/api/users/get_user/:user_id', users.getUser);
 
 app.post('/api/events/find_event/', events.findEvent);
 app.get('/api/events/get_event/:name', events.getEvent);
