@@ -13,16 +13,16 @@ app.controller("HomeController", ['$scope', '$location', 'AuthenticationService'
 
 	$scope.search = function () {
 		var search_obj = {}
-		if ($scope.search_mothers_first_name !== '') {
+		if ($scope.search_mothers_first_name !== undefined) {
 			search_obj.mothers_first_name = $scope.search_mothers_first_name;
 		}
-		if ($scope.search_mothers_last_name !== '') {
+		if ($scope.search_mothers_last_name !== undefined) {
 			search_obj.mothers_last_name = $scope.search_mothers_last_name;
 		}
-		if ($scope.search_fathers_first_name !== '') {
+		if ($scope.search_fathers_first_name !== undefined) {
 			search_obj.fathers_first_name = $scope.search_fathers_first_name;
 		}
-		if ($scope.search_fathers_last_name !== '') {
+		if ($scope.search_fathers_last_name !== undefined) {
 			search_obj.fathers_last_name = $scope.search_fathers_last_name;
 		}
 		if (search_obj.fathers_last_name || search_obj.fathers_first_name || search_obj.mothers_last_name ||search_obj.mothers_first_name) {

@@ -63,6 +63,7 @@ body {
 		height: 0;
 		z-index: 5;
 		.search_result {
+			cursor: pointer;
 			background: rgba($white, .8);
 			padding: 10px;
 		}
