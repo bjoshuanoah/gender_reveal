@@ -4,11 +4,11 @@
         <div class='row'>
             <div class="large-6 small-6 columns vote_count" ng-if="title">
                 <span>Girl Votes</span><br>
-                <span class="vote_number girl">{{girl_votes_length}}</span>
+                <span class="vote_number girl">{{girl_votes}}</span>
             </div>
             <div class="large-6 small-6 columns vote_count" ng-if="title">
                 <span>Boy Votes</span><br>
-                <span class="vote_number boy">{{boy_votes_length}}</span>
+                <span class="vote_number boy">{{boy_votes}}</span>
             </div>
         </div>
         <div id="event_vote" class="row" ng-show="!fullscreen && title && !voted">

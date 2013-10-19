@@ -21,3 +21,23 @@ function localConstructor() {
 };
 
 var local = new localConstructor();
+
+var formatLargeNumber = function (count) {
+    count = count + '';
+    console.log(count.length);
+    switch (count.length) {
+        case 4: 
+            return (count / 1000).toFixed(1) + 'k'
+            break;
+        case 5: 
+            return (count / 1000) + 'k'
+            break;
+        case 6: 
+            return (count / 1000000).toFixed(2).substring(1,4) + 'm'
+            break;
+        default:
+            return count;
+            break;
+    }
+};
+

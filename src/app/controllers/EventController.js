@@ -22,6 +22,16 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 	$scope.getEvent = function () {
 	  	apiCall.getEvent(event_name).then(function(result) {
 	  		angular.extend($scope, result.data[0]);
+	  		if ($scope.boy_votes_length > 999) {
+	  			$scope.boy_votes = formatLargeNumber($scope.boy_votes_length);
+	  		} else {
+	  			$scope.boy_votes = $scope.boy_votes_length;
+	  		}
+	  		if ($scope.girl_votes_length > 999) {
+	  			$scope.girl_votes = formatLargeNumber($scope.girl_votes_length);
+	  		} else {
+	  			$scope.girl_votes = $scope.girl_votes_length;
+	  		}
 	  		if (local.get('user')){
 	  			var user_id = local.get('user').user_id;
 	  			if ($scope.voted_users.indexOf(user_id) > -1) {

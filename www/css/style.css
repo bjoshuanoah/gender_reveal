@@ -127,15 +127,27 @@ h1 {
   font-size: 100px;
   text-shadow: 0 0 2px white;
 }
-/* line 113, ../../src/sass/style.scss */
+@media (max-width: 1126px) {
+  /* line 108, ../../src/sass/style.scss */
+  #event_view .vote_count .vote_number {
+    font-size: 80px;
+  }
+}
+@media (max-width: 920px) {
+  /* line 108, ../../src/sass/style.scss */
+  #event_view .vote_count .vote_number {
+    font-size: 56px;
+  }
+}
+/* line 119, ../../src/sass/style.scss */
 #event_view #event_info {
   margin: 0 0 20px;
 }
-/* line 118, ../../src/sass/style.scss */
+/* line 124, ../../src/sass/style.scss */
 #event_view #event_vote div {
   padding: 0;
 }
-/* line 121, ../../src/sass/style.scss */
+/* line 127, ../../src/sass/style.scss */
 #event_view #event_vote button {
   width: 100%;
   height: 80px;
@@ -146,32 +158,32 @@ h1 {
   -o-transition: background 0.3s;
   transition: background 0.3s;
 }
-/* line 127, ../../src/sass/style.scss */
+/* line 133, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_boy {
   background: #9cceff;
 }
-/* line 129, ../../src/sass/style.scss */
+/* line 135, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_boy:hover {
   background: #8dc6ff;
 }
-/* line 132, ../../src/sass/style.scss */
+/* line 138, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_boy:active {
   background: #83c1ff;
 }
-/* line 136, ../../src/sass/style.scss */
+/* line 142, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_girl {
   background: #ffbebe;
 }
-/* line 138, ../../src/sass/style.scss */
+/* line 144, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_girl:hover {
   background: #ffafaf;
 }
-/* line 141, ../../src/sass/style.scss */
+/* line 147, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_girl:active {
   background: #ffa4a4;
 }
 
-/* line 148, ../../src/sass/style.scss */
+/* line 154, ../../src/sass/style.scss */
 #myChart, #homePageChart {
   width: 100% !important;
   height: auto !important;

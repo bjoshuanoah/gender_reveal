@@ -21,6 +21,27 @@ function localConstructor() {
 };
 
 var local = new localConstructor();
+
+var formatLargeNumber = function (count) {
+    count = count + '';
+    console.log(count.length);
+    switch (count.length) {
+        case 4: 
+            return (count / 1000).toFixed(1) + 'k'
+            break;
+        case 5: 
+            return (count / 1000) + 'k'
+            break;
+        case 6: 
+            return (count / 1000000).toFixed(2).substring(1,4) + 'm'
+            break;
+        default:
+            return count;
+            break;
+    }
+};
+
+
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true);
@@ -66,6 +87,16 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 	$scope.getEvent = function () {
 	  	apiCall.getEvent(event_name).then(function(result) {
 	  		angular.extend($scope, result.data[0]);
+	  		if ($scope.boy_votes_length > 999) {
+	  			$scope.boy_votes = formatLargeNumber($scope.boy_votes_length);
+	  		} else {
+	  			$scope.boy_votes = $scope.boy_votes_length;
+	  		}
+	  		if ($scope.girl_votes_length > 999) {
+	  			$scope.girl_votes = formatLargeNumber($scope.girl_votes_length);
+	  		} else {
+	  			$scope.girl_votes = $scope.girl_votes_length;
+	  		}
 	  		if (local.get('user')){
 	  			var user_id = local.get('user').user_id;
 	  			if ($scope.voted_users.indexOf(user_id) > -1) {

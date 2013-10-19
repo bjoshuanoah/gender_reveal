@@ -108,6 +108,12 @@ h1 {
 		.vote_number {
 			font-size: 100px;
 			text-shadow: 0 0 2px $white;
+			@media (max-width: 1126px) {
+				font-size: 80px;
+			}
+			@media (max-width: 920px) {
+				font-size: 56px;
+			}
 		}
 	}
 	#event_info {
