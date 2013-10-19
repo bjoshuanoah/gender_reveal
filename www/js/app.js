@@ -105,7 +105,7 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 	  		}
 	  		setTimeout(function() {
 	  			if (window.innerWidth > 767) {
-			  		$event_info.animate({"top": ((window.innerHeight - 40)- $event_info.outerHeight())/2 + 'px'});
+			  		$event_info.animate({"margin-top": ((window.innerHeight - 40)- $event_info.outerHeight())/2 + 'px'});
 			  	}
 	  		},20)
 		});
@@ -207,7 +207,7 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 		}
 	};
 	$(window).resize(function () {
-		if (window.innerWidth >767) {
+		if (window.innerWidth > 767) {
 			$event_info.css({"margin-top": ((window.innerHeight - 40)- $event_info.outerHeight())/2 + 'px'});
 		} else {
 			$event_info.css({"margin-top": '0'});

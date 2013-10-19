@@ -2,7 +2,7 @@
 	<h1>Guess the Sex</h1>
 </div>
 <div id="home" class="row">
-	<div class="large-6 columns">
+	<div class="large-6 columns hide-for-small">
 		<canvas id="homePageChart" width="1200" height="1200"></canvas>
 	</div>
 	<div class="large-6 columns">

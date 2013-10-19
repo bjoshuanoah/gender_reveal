@@ -2,6 +2,7 @@ $white: #fff;
 $green: #BCD695;
 $girl: rgb(255, 190, 190);
 $boy: rgb(156, 206, 255);
+$orange: rgb(250,130,130);
 
 @import "compass/css3";
 
@@ -12,9 +13,11 @@ h1,h2,h3,h4,h5 {
 }
 
 button {
-  margin-bottom: 0px !important;
-  width:100%;
-  height:70px;
+	margin-bottom: 0px !important;
+	width:100%;
+	height:70px;
+	background: $orange;
+	color: $white;
 }
 input {
 	width:100%;
