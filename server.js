@@ -65,6 +65,10 @@ app.get('/:anything', function (req, res) {
 });
 
 viewed_events = {};
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
 console.log(viewed_events);
 io.sockets.on('connection', function (client) {
     client.emit('connected');
@@ -89,6 +93,7 @@ io.sockets.on('connection', function (client) {
     }); 
 
 })
+
 
 
 server.listen(app.get('port'), function(){
