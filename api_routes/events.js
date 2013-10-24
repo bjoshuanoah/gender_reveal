@@ -30,6 +30,7 @@ exports.socket = function (req, res) {
 	var event_name = req.params.event_name;
 	var obj = {};
 	update_event_stats(event_name, obj);
+	res.send({status: 'success'});
 }
 
 exports.createEvent = function (req, res) {
