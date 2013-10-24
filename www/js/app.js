@@ -148,7 +148,10 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 			socket.emit('event_name', {event_name: event_name});
 		});
 		socket.on('updated', function () {
-			$scope.getEvent();
+			$scope.$apply(function () {
+				console.log('updated')
+				$scope.getEvent();
+			})
 		})
 	},10000);
 	$scope.vote = function (e, gender) {

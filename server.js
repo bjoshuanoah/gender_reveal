@@ -59,16 +59,13 @@ app.get('/api/events/get_event/:name', events.getEvent);
 app.get('/api/events/vote_girl/:event_id/:name/:user_id', events.voteGirl);
 app.get('/api/events/vote_boy/:event_id/:name/:user_id', events.voteBoy);
 app.post('/api/events/create', events.createEvent);
+app.get('/api/events/socket/:event_name', events.socket);
 
 app.get('/:anything', function (req, res) {
     res.render('index.html');
 });
 
 viewed_events = {};
-// io.configure(function () { 
-//   io.set("transports", ["xhr-polling"]); 
-//   io.set("polling duration", 10); 
-// });
 console.log(viewed_events);
 io.sockets.on('connection', function (client) {
     client.emit('connected');
@@ -93,7 +90,6 @@ io.sockets.on('connection', function (client) {
     }); 
 
 })
-
 
 
 server.listen(app.get('port'), function(){

@@ -17,14 +17,20 @@ var databaseUrl = "bjoshuanoah:qwert1@paulo.mongohq.com:10021/gender_reveal",
 
 
 var update_event_stats = function (event_name, obj) {
-    var event_name = req.params.event_name;
     var event_client_array = viewed_events[event_name];
     for (var i = 0; i< event_client_array.length; i++) {
         var client_id = event_client_array[i];
         io.sockets.socket(client_id).emit('updated', obj);
+        console.log('sending_socket to' + event_client_array);
     }
 };
 
+
+exports.socket = function (req, res) {
+	var event_name = req.params.event_name;
+	var obj = {};
+	update_event_stats(event_name, obj);
+}
 
 exports.createEvent = function (req, res) {
 	var new_event_obj = req.body;
@@ -126,6 +132,7 @@ exports.voteGirl = function (req, res) {
 								girl_votes: response[0].girl_votes.length
 							}
 							res.send(obj);
+							console.log('sending_socket');
 							update_event_stats(response[0].name, obj);
 						} )
 					} else {
@@ -182,6 +189,7 @@ exports.voteBoy = function (req, res) {
 							}
 							res.send(obj);
 							update_event_stats(response[0].name, obj);
+							console.log('sending_socket');
 						} )
 					} else {
 						console.log('cant get second respons')
