@@ -137,7 +137,7 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 					$scope.voted = false;
 					$scope.$apply();
 				}
-			});
+			}, {scope: 'email'});
 		} else {
 			var vote_obj = {};
 			vote_obj.event_id = $scope._id;
