@@ -37,6 +37,21 @@ module.exports = function(grunt) {
                 livereload: true
             },
         },
+    },
+    nodemon: {
+      dev: {
+        options: {
+          file: 'server.js'
+        }
+      }
+    },
+    concurrent: {
+      dev: {
+        tasks: ['nodemon', 'watch'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
     }
   });
 
@@ -45,9 +60,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-concurrent');
 
 
   // Default task(s).
+  grunt.registerTask('server', ['concurrent:dev']);
   grunt.registerTask('default', ['compass', 'concat', 'uglify']);
+
 
 };
