@@ -16,12 +16,12 @@ var databaseUrl = "bjoshuanoah:qwert1@paulo.mongohq.com:10021/gender_reveal",
 // }
 
 
-var update_event_stats = function (event_name, obj) {
+update_event_stats = function (event_name, obj) {
     var event_client_array = viewed_events[event_name];
     for (var i = 0; i< event_client_array.length; i++) {
         var client_id = event_client_array[i];
         io.sockets.socket(client_id).emit('updated', obj);
-        console.log('sending_socket to' + event_client_array);
+        console.log('sending_socket to ' + event_client_array + ' for event ' + event_name);
     }
 };
 
