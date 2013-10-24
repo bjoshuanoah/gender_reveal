@@ -34,6 +34,7 @@ module.exports = function(grunt) {
             tasks: ['concat', 'compass'],
             options: {
                 spawn: false,
+                livereload: true
             },
         },
     }

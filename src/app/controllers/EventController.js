@@ -75,8 +75,17 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 			  	}
 	  		},20)
 		});
-	}
+	};
 	$scope.getEvent();
+	setTimeout(function() {
+		socket = io.connect('/');
+		socket.on('connected', function () {
+			socket.emit('event_name', {event_name: event_name});
+		});
+		socket.on('updated', function () {
+			$scope.getEvent();
+		})
+	},10000);
 	$scope.vote = function (e, gender) {
 		var $this = $(e.target);
 		$scope.voted = true;
@@ -125,7 +134,7 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 					$scope.voted = false;
 					$scope.$apply();
 				}
-			}, {scope:'email, user_likes, user_checkins, user_birthday'});
+			});
 		} else {
 			var vote_obj = {};
 			vote_obj.event_id = $scope._id;

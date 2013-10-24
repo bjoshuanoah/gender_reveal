@@ -14,6 +14,18 @@ var databaseUrl = "bjoshuanoah:qwert1@paulo.mongohq.com:10021/gender_reveal",
 // 	name: url_name - string,
 // 	title: string"
 // }
+
+
+var update_event_stats = function (event_name, obj) {
+    var event_name = req.params.event_name;
+    var event_client_array = viewed_events[event_name];
+    for (var i = 0; i< event_client_array.length; i++) {
+        var client_id = event_client_array[i];
+        io.sockets.socket(client_id).emit('updated', obj);
+    }
+};
+
+
 exports.createEvent = function (req, res) {
 	var new_event_obj = req.body;
 	new_event_obj.voted_users=[];
@@ -31,7 +43,7 @@ exports.createEvent = function (req, res) {
 			res.send(response);
 		}
 	});
-}
+};
 
 // Search by parents names
 exports.findEvent = function (req, res) {
@@ -109,10 +121,12 @@ exports.voteGirl = function (req, res) {
 				} else {
 					if (response) {
 						db.events.find({_id:db.ObjectId(event_id)}, function (error, response) {
-							res.send({
+							var obj = {
 								boy_votes: response[0].boy_votes.length,
 								girl_votes: response[0].girl_votes.length
-							})
+							}
+							res.send(obj);
+							update_event_stats(response[0].name, obj);
 						} )
 					} else {
 						console.log('cant get second respons')
@@ -162,10 +176,12 @@ exports.voteBoy = function (req, res) {
 				} else {
 					if (response) {
 						db.events.find({_id:db.ObjectId(event_id)}, function (error, response) {
-							res.send({
+							var obj = {
 								boy_votes: response[0].boy_votes.length,
 								girl_votes: response[0].girl_votes.length
-							})
+							}
+							res.send(obj);
+							update_event_stats(response[0].name, obj);
 						} )
 					} else {
 						console.log('cant get second respons')
