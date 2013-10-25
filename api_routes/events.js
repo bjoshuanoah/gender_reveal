@@ -16,6 +16,7 @@ var databaseUrl = "bjoshuanoah:qwert1@paulo.mongohq.com:10021/gender_reveal",
 // }
 
 
+
 update_event_stats = function (event_name, obj) {
     var event_client_array = viewed_events[event_name];
     for (var i = 0; i< event_client_array.length; i++) {
@@ -25,6 +26,19 @@ update_event_stats = function (event_name, obj) {
     }
 };
 
+
+exports.updateGender = function (req, res) {
+	var event_name = req.params.event_name;
+	var gender = req.params.gender;
+	db.events.find({name: event_name}, function (err, response) {
+		var new_event_obj = response[0];
+		new_event_obj.gender = gender;
+		db.events.update({name:event_name}, new_event_obj, function ( err, response) {
+			update_event_stats(event_name, {});
+			res.send({status: 'success'})
+		});
+	});
+}
 
 exports.socket = function (req, res) {
 	var event_name = req.params.event_name;

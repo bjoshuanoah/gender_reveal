@@ -60,6 +60,7 @@ app.get('/api/events/vote_girl/:event_id/:name/:user_id', events.voteGirl);
 app.get('/api/events/vote_boy/:event_id/:name/:user_id', events.voteBoy);
 app.post('/api/events/create', events.createEvent);
 app.get('/api/events/socket/:event_name', events.socket);
+app.get('/api/events/update_gender/:event_name/:gender', events.updateGender);
 
 app.get('/:anything', function (req, res) {
     res.render('index.html');
