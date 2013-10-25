@@ -18,7 +18,7 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 		animateRotate : true,
 		animateScale : true,
 		onAnimationComplete : null
-	};
+	}; 
 	$scope.getEvent = function () {
 	  	apiCall.getEvent(event_name).then(function(result) {
 	  		angular.extend($scope, result.data[0]);

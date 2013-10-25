@@ -90,6 +90,13 @@ h1 {
 		margin-top: 0 !important;
 		top: 0 !important;
 	}
+	@include transition(background-color 1s);
+	&.boy {
+		background-color: $boy;
+	}
+	&.girl {
+		background-color: $girl
+	}
 	h1 {
 		font-size: 53px;
 		line-height: 60px;
@@ -114,6 +121,11 @@ h1 {
 			@media (max-width: 920px) {
 				font-size: 56px;
 			}
+		}
+		.vote_result {
+			padding-bottom:30px;
+			text-shadow: 0 0 2px $white;
+			font-size: 80px;
 		}
 	}
 	#event_info {
