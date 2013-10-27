@@ -2,8 +2,15 @@
 update_event_stats = function (event_name, obj) {
 
 	redis.smembers('events:' + event_name, function (err, reply) {
-        var event_client_array = reply;
-        io.sockets.socket(event_client_array).emit('updated', obj);
+		// console.log(reply);
+        var event_client_array = reply.toString().split(',');
+        // console.log(event_client_array)
+        for (var i = 0; i< event_client_array.length; i++) {
+	        var client_id = event_client_array[i];
+	        // console.log(client_id)
+	        io.sockets.socket(client_id).emit('updated', obj);
+	        // console.log('sending_socket to ' + client_id + ' for event ' + event_name);
+	    }
     });
 };
 

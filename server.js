@@ -89,7 +89,6 @@ redis = Redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: tr
 redis.auth(redisURL.pass);
 
 
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //   Sockets                        //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
@@ -101,19 +100,19 @@ io.sockets.on('connection', function (client) {
         var client_id = client.id;
         console.log(client_id);
         redis.sadd('events:' + client.event_name, client_id, function ( err, reply) {
-            console.log(err);
-            console.log('events:' + client.event_name, reply);
+            // console.log(err);
+            // console.log('events:' + client.event_name, reply);
         });
         redis.smembers('events:' + client.event_name, function (err, reply) {
-            console.log('events:' + client.event_name, reply);
+            // console.log('events:' + client.event_name, reply);
         });
     });
     client.on('disconnect', function() {
         var client_id = client.id;
-        console.log(client_id);
+        // console.log(client_id);
         redis.srem('events:' + client.event_name, client_id);
         redis.smembers('events:' + client.event_name, function (err, reply) {
-            console.log('events:' + client.event_name, reply);
+            // console.log('events:' + client.event_name, reply);
         });
     }); 
 
