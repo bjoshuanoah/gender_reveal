@@ -1,29 +1,10 @@
-var databaseUrl = "bjoshuanoah:qwert1@paulo.mongohq.com:10021/gender_reveal",
-    collections = ["users", "events"],
-    db = require("mongojs").connect(databaseUrl, collections);
-
-//create event
-//must have
-// {
-// 	chart_type: "Pie" || "Doughnut,
-// 	due_date: ts,
-// 	fathers_first_name: string,
-// 	fathers_last_name: string,
-// 	mothers_first_name: string,
-// 	mothers_last_name: string,
-// 	name: url_name - string,
-// 	title: string"
-// }
-
-
 
 update_event_stats = function (event_name, obj) {
-    var event_client_array = viewed_events[event_name];
-    for (var i = 0; i< event_client_array.length; i++) {
-        var client_id = event_client_array[i];
-        io.sockets.socket(client_id).emit('updated', obj);
-        console.log('sending_socket to ' + event_client_array + ' for event ' + event_name);
-    }
+
+	redis.smembers('events:' + event_name, function (err, reply) {
+        var event_client_array = reply;
+        io.sockets.socket(event_client_array).emit('updated', obj);
+    });
 };
 
 
@@ -47,6 +28,19 @@ exports.socket = function (req, res) {
 	res.send({status: 'success'});
 }
 
+
+//create event
+//must have
+// {
+// 	chart_type: "Pie" || "Doughnut,
+// 	due_date: ts,
+// 	fathers_first_name: string,
+// 	fathers_last_name: string,
+// 	mothers_first_name: string,
+// 	mothers_last_name: string,
+// 	name: url_name - string,
+// 	title: string"
+// }
 exports.createEvent = function (req, res) {
 	var new_event_obj = req.body;
 	new_event_obj.voted_users=[];

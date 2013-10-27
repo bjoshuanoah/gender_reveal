@@ -1,6 +1,3 @@
-var databaseUrl = "bjoshuanoah:qwert1@paulo.mongohq.com:10021/gender_reveal",
-    collections = ["users", "events"],
-    db = require("mongojs").connect(databaseUrl, collections);
 
 exports.create = function (req, res) {
 	var user_obj = req.body;
