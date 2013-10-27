@@ -72,7 +72,7 @@ app.post('/api/events/create', events.createEvent);
 app.get('/api/events/socket/:event_name', events.socket);
 app.get('/api/events/update_gender/:event_name/:gender', events.updateGender);
 
-app.get('/**', function (req, res) {
+app.get('/*', function (req, res) {
     res.render('index.html');
 });
 

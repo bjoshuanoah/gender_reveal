@@ -1,4 +1,4 @@
-/*! Gender-Reveal - 1.0.0 - 2013-10-26 */
+/*! Gender-Reveal - 1.0.0 - 2013-10-27 */
 
 /* line 9, ../../src/sass/style.scss */
 h1, h2, h3, h4, h5 {
@@ -8,6 +8,20 @@ h1, h2, h3, h4, h5 {
 }
 
 /* line 15, ../../src/sass/style.scss */
+.h1 {
+  text-align: center;
+  font-family: HelveticaNeue-Light, Helvetica Neue Light;
+  font-weight: normal;
+  background-color: transparent;
+  border: 0;
+  font-size: 53px;
+  line-height: 60px;
+  margin: 0 0 15px;
+  color: white;
+  height: auto;
+}
+
+/* line 28, ../../src/sass/style.scss */
 button {
   margin-bottom: 0px !important;
   width: 100%;
@@ -16,7 +30,7 @@ button {
   color: white;
 }
 
-/* line 22, ../../src/sass/style.scss */
+/* line 35, ../../src/sass/style.scss */
 input {
   width: 100%;
   height: 45px;
@@ -24,73 +38,73 @@ input {
   font-size: 22px;
 }
 
-/* line 29, ../../src/sass/style.scss */
+/* line 42, ../../src/sass/style.scss */
 body {
   font-size: 16px;
   background: #bcd695;
   font-family: HelveticaNeue-Light, Helvetica Neue Light;
 }
 
-/* line 35, ../../src/sass/style.scss */
+/* line 48, ../../src/sass/style.scss */
 * {
   box-sizing: border-box;
   position: relative;
   outline: none;
 }
 
-/* line 41, ../../src/sass/style.scss */
+/* line 54, ../../src/sass/style.scss */
 .boy {
   color: #9cceff;
 }
 
-/* line 44, ../../src/sass/style.scss */
+/* line 57, ../../src/sass/style.scss */
 .girl {
   color: #ffbebe;
 }
 
-/* line 48, ../../src/sass/style.scss */
+/* line 61, ../../src/sass/style.scss */
 h1 {
   color: white;
   font-size: 60px;
 }
 
-/* line 53, ../../src/sass/style.scss */
+/* line 66, ../../src/sass/style.scss */
 #home {
   max-width: 62.5em !important;
   margin: 30px auto;
 }
-/* line 56, ../../src/sass/style.scss */
+/* line 69, ../../src/sass/style.scss */
 #home h2 {
   color: white;
 }
-/* line 60, ../../src/sass/style.scss */
+/* line 73, ../../src/sass/style.scss */
 #home .search_events .search_fields {
   padding: 0;
   margin: 0 -2px;
 }
-/* line 63, ../../src/sass/style.scss */
+/* line 76, ../../src/sass/style.scss */
 #home .search_events .search_fields > div {
   padding: 2px;
 }
-/* line 65, ../../src/sass/style.scss */
+/* line 78, ../../src/sass/style.scss */
 #home .search_events .search_fields > div input {
   padding: 5px;
 }
-/* line 71, ../../src/sass/style.scss */
+/* line 84, ../../src/sass/style.scss */
 #home #search_results_container {
   display: block;
   width: 100%;
   height: 0;
   z-index: 5;
 }
-/* line 76, ../../src/sass/style.scss */
+/* line 89, ../../src/sass/style.scss */
 #home #search_results_container .search_result {
   cursor: pointer;
   background: rgba(255, 255, 255, 0.8);
   padding: 10px;
 }
 
-/* line 85, ../../src/sass/style.scss */
+/* line 98, ../../src/sass/style.scss */
 #event_view {
   padding: 20px;
   margin: 0;
@@ -101,71 +115,71 @@ h1 {
   transition: background-color 1s;
 }
 @media (max-width: 767px) {
-  /* line 85, ../../src/sass/style.scss */
+  /* line 98, ../../src/sass/style.scss */
   #event_view {
     margin-top: 0 !important;
     top: 0 !important;
   }
 }
-/* line 94, ../../src/sass/style.scss */
+/* line 107, ../../src/sass/style.scss */
 #event_view.boy {
   background-color: #9cceff;
 }
-/* line 97, ../../src/sass/style.scss */
+/* line 110, ../../src/sass/style.scss */
 #event_view.girl {
   background-color: #ffbebe;
 }
-/* line 100, ../../src/sass/style.scss */
+/* line 113, ../../src/sass/style.scss */
 #event_view h1 {
   font-size: 53px;
   line-height: 60px;
   margin: 0 0 15px;
   color: white;
 }
-/* line 106, ../../src/sass/style.scss */
+/* line 119, ../../src/sass/style.scss */
 #event_view h2 {
   color: white;
   margin: 25px 0 5px;
 }
-/* line 110, ../../src/sass/style.scss */
+/* line 123, ../../src/sass/style.scss */
 #event_view .vote_count {
   font-size: 25px;
   background: rgba(255, 255, 255, 0.5);
   padding: 10px;
   text-align: center;
 }
-/* line 115, ../../src/sass/style.scss */
+/* line 128, ../../src/sass/style.scss */
 #event_view .vote_count .vote_number {
   font-size: 100px;
   text-shadow: 0 0 2px white;
 }
 @media (max-width: 1126px) {
-  /* line 115, ../../src/sass/style.scss */
+  /* line 128, ../../src/sass/style.scss */
   #event_view .vote_count .vote_number {
     font-size: 80px;
   }
 }
 @media (max-width: 920px) {
-  /* line 115, ../../src/sass/style.scss */
+  /* line 128, ../../src/sass/style.scss */
   #event_view .vote_count .vote_number {
     font-size: 56px;
   }
 }
-/* line 125, ../../src/sass/style.scss */
+/* line 138, ../../src/sass/style.scss */
 #event_view .vote_count .vote_result {
   padding-bottom: 30px;
   text-shadow: 0 0 2px white;
   font-size: 80px;
 }
-/* line 131, ../../src/sass/style.scss */
+/* line 144, ../../src/sass/style.scss */
 #event_view #event_info {
   margin: 0 0 20px;
 }
-/* line 136, ../../src/sass/style.scss */
+/* line 149, ../../src/sass/style.scss */
 #event_view #event_vote div {
   padding: 0;
 }
-/* line 139, ../../src/sass/style.scss */
+/* line 152, ../../src/sass/style.scss */
 #event_view #event_vote button {
   width: 100%;
   height: 80px;
@@ -176,32 +190,59 @@ h1 {
   -o-transition: background 0.3s;
   transition: background 0.3s;
 }
-/* line 145, ../../src/sass/style.scss */
+/* line 158, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_boy {
   background: #9cceff;
 }
-/* line 147, ../../src/sass/style.scss */
+/* line 160, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_boy:hover {
   background: #8dc6ff;
 }
-/* line 150, ../../src/sass/style.scss */
+/* line 163, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_boy:active {
   background: #83c1ff;
 }
-/* line 154, ../../src/sass/style.scss */
+/* line 167, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_girl {
   background: #ffbebe;
 }
-/* line 156, ../../src/sass/style.scss */
+/* line 169, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_girl:hover {
   background: #ffafaf;
 }
-/* line 159, ../../src/sass/style.scss */
+/* line 172, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_girl:active {
   background: #ffa4a4;
 }
 
-/* line 166, ../../src/sass/style.scss */
+/* line 180, ../../src/sass/style.scss */
+#event_admin {
+  max-width: 62.5em !important;
+  margin: 0 auto;
+  padding: 30px;
+  min-height: 450px;
+  background: rgba(255, 255, 255, 0.3);
+}
+/* line 186, ../../src/sass/style.scss */
+#event_admin .title {
+  text-align: right;
+}
+/* line 189, ../../src/sass/style.scss */
+#event_admin .info_row {
+  margin-top: 10px;
+}
+
+/* line 194, ../../src/sass/style.scss */
+.text_right {
+  text-align: right;
+}
+
+/* line 197, ../../src/sass/style.scss */
+.padding-right-10 {
+  padding-right: 10px;
+}
+
+/* line 201, ../../src/sass/style.scss */
 #myChart, #homePageChart {
   width: 100% !important;
   height: auto !important;

@@ -1,0 +1,52 @@
+
+<div id="event_admin" class="row">
+	<div class="large-10 columns large-centered">
+		<input class="h1" type="text" ng-model="title" placeholder="Enter Title">
+
+		<div id="mothers_info" class="row info_row">
+			<div class="large-3 columns text_right padding-right-10">
+				Mother's First Name
+			</div>
+			<div class="large-3 columns">
+				<input type="text" ng-model="mothers_first_name" placeholder="Mother's First Name">
+			</div>
+			<div class="large-3 columns text_right padding-right-10">
+				Mother's Last Name
+			</div>
+			<div class="large-3 columns">
+				<input type="text" ng-model="mothers_last_name" placeholder="Mother's Last Name">
+			</div>
+		</div>
+		<div id="mothers_info" class="row info_row">
+			<div class="large-3 columns text_right padding-right-10">
+				Father's First Name
+			</div>
+			<div class="large-3 columns">
+				<input type="text" ng-model="fathers_first_name" placeholder="Father's First Name">
+			</div>
+			<div class="large-3 columns text_right padding-right-10">
+				Father's Last Name
+			</div>
+			<div class="large-3 columns">
+				<input type="text" ng-model="fathers_last_name" placeholder="Father's Last Name">
+			</div>
+		</div>
+
+		<h3>Votes</h3>
+		<div id="votes_section" class="row">
+			<div class="large-6 columns">
+				<h5>Girl Votes</h5>
+				<div class="vote_result" ng-repeat="vote in girl_votes">
+					<span><a href="http://facebook.com/{{vote.user_id}}">{{vote.name}}</a></span>
+				</div>
+			</div>
+			<div class="large-6 columns">
+				<h5>Boy Votes</h5>
+				<div class="vote_result" ng-repeat="vote in boy_votes">
+					<span><a href="http://facebook.com/{{vote.user_id}}">{{vote.name}}</a></span>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

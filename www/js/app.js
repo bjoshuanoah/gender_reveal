@@ -43,25 +43,38 @@ var formatLargeNumber = function (count) {
 
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
 
-  $locationProvider.html5Mode(true);
+    $routeProvider.when('/', {
+            templateUrl: '/src/app/views/home.ng',
+            controller: 'HomeController'
+        });
+    $routeProvider.when('/login', {
+        templateUrl: '/src/app/views/login.ng',
+        controller: 'LoginController'
+    });
+    $routeProvider.when('/:event/admin', {
+        templateUrl: '/src/app/views/event_admin.ng',
+        controller: 'EventAdminController'
+    });
+    $routeProvider.when('/:event', {
+        templateUrl: '/src/app/views/event.ng',
+        controller: 'EventController'
+    });
+    $routeProvider.otherwise({ 
+        redirectTo: '/' 
+    });
 
-  $routeProvider.when('/', {
-    templateUrl: '/src/app/views/home.ng',
-    controller: 'HomeController'
-  });
- 
-  $routeProvider.when('/login', {
-    templateUrl: '/src/app/views/login.ng',
-    controller: 'LoginController'
-  }); 
 
-  $routeProvider.when('/:event', {
-    templateUrl: '/src/app/views/event.ng',
-    controller: 'EventController'
-  });  
- 
-  $routeProvider.otherwise({ redirectTo: '/' });
+}]);
+app.controller("EventAdminController", ['$scope', '$location', '$http', 'apiCall', function($scope, $location, $http, apiCall) {
+	var event_name = $location.path().split('/')[1];
+	scope = $scope;
+
+	console.log(event_name);
+	apiCall.getEvent(event_name).then(function(result) {
+  		angular.extend($scope, result.data[0]);
+  	});
 }]);
 app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', function($scope, $location, $http, apiCall) {
 	var chart_element = document.getElementById("myChart").getContext("2d"),
@@ -71,7 +84,6 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
   	$scope.event_url = event_name;
 	scope = $scope;
 	genderChart = new Chart(chart_element);
-
 
 	options = {
 		segmentShowStroke : true,

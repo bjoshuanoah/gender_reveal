@@ -7,7 +7,6 @@ app.controller("EventController", ['$scope', '$location', '$http', 'apiCall', fu
 	scope = $scope;
 	genderChart = new Chart(chart_element);
 
-
 	options = {
 		segmentShowStroke : true,
 		segmentStrokeColor : "#fff",
