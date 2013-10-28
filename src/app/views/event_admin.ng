@@ -1,47 +1,85 @@
 
 <div id="event_admin" class="row">
 	<div class="large-10 columns large-centered">
-		<input class="h1" type="text" ng-model="title" placeholder="Enter Title">
+
+		<h1>Gender Poll Info</h1>
+
+		<div id="general_info" class="row info_row">
+			<div class="large-3 columns text_right padding-right-10">
+				Page Title:
+			</div>
+			<div class="large-3 columns">
+				<input type="text" ng-model="title" placeholder="Page Title">
+			</div>
+			<div class="large-3 columns text_right padding-right-10">
+				http://guessthesex.co/
+			</div>
+			<div class="large-3 columns">
+				<input type="text" ng-model="name" placeholder="url">
+			</div>
+		</div>
+
+		<div id="display_nfo" class="row info_row">
+			<div class="large-3 columns text_right padding-right-10">
+				Graph Type:
+			</div>
+			<div class="large-3 columns">
+				<select ng-model="chart_type" ng-options="type for type in available_graphs">
+		        </select>	
+			</div>
+			<div class="large-3 columns text_right padding-right-10">
+				Due Date:
+			</div>
+			<div class="large-2 columns padding-right-10">
+				<select ng-model="due_date_month" ng-options="month for month in months">
+		        </select>	
+			</div>
+			<div class="large-1 columns">
+				<select ng-model="due_date_year" ng-options="year for year in years">
+		        </select>	
+			</div>
+		</div>
 
 		<div id="mothers_info" class="row info_row">
 			<div class="large-3 columns text_right padding-right-10">
-				Mother's First Name
+				Mother's First Name:
 			</div>
 			<div class="large-3 columns">
 				<input type="text" ng-model="mothers_first_name" placeholder="Mother's First Name">
 			</div>
 			<div class="large-3 columns text_right padding-right-10">
-				Mother's Last Name
-			</div>
-			<div class="large-3 columns">
-				<input type="text" ng-model="mothers_last_name" placeholder="Mother's Last Name">
-			</div>
-		</div>
-		<div id="mothers_info" class="row info_row">
-			<div class="large-3 columns text_right padding-right-10">
-				Father's First Name
+				Father's First Name:
 			</div>
 			<div class="large-3 columns">
 				<input type="text" ng-model="fathers_first_name" placeholder="Father's First Name">
 			</div>
+		</div>
+		<div id="fathers_info" class="row info_row">
 			<div class="large-3 columns text_right padding-right-10">
-				Father's Last Name
+				Mother's Last Name:
+			</div>
+			<div class="large-3 columns">
+				<input type="text" ng-model="mothers_last_name" placeholder="Mother's Last Name">
+			</div>
+			
+			<div class="large-3 columns text_right padding-right-10">
+				Father's Last Name:
 			</div>
 			<div class="large-3 columns">
 				<input type="text" ng-model="fathers_last_name" placeholder="Father's Last Name">
 			</div>
 		</div>
 
-		<h3>Votes</h3>
+		<h1>Votes</h1>
 		<div id="votes_section" class="row">
 			<div class="large-6 columns">
-				<h5>Girl Votes</h5>
+				<h5>Girl Votes({{girl_votes.length}})</h5>
 				<div class="vote_result" ng-repeat="vote in girl_votes">
 					<span><a href="http://facebook.com/{{vote.user_id}}">{{vote.name}}</a></span>
 				</div>
 			</div>
 			<div class="large-6 columns">
-				<h5>Boy Votes</h5>
+				<h5>Boy Votes({{boy_votes.length}})</h5>
 				<div class="vote_result" ng-repeat="vote in boy_votes">
 					<span><a href="http://facebook.com/{{vote.user_id}}">{{vote.name}}</a></span>
 				</div>

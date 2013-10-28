@@ -9,7 +9,6 @@ h1, h2, h3, h4, h5 {
 
 /* line 15, ../../src/sass/style.scss */
 .h1 {
-  text-align: center;
   font-family: HelveticaNeue-Light, Helvetica Neue Light;
   font-weight: normal;
   background-color: transparent;
@@ -21,7 +20,7 @@ h1, h2, h3, h4, h5 {
   height: auto;
 }
 
-/* line 28, ../../src/sass/style.scss */
+/* line 27, ../../src/sass/style.scss */
 button {
   margin-bottom: 0px !important;
   width: 100%;
@@ -30,7 +29,7 @@ button {
   color: white;
 }
 
-/* line 35, ../../src/sass/style.scss */
+/* line 34, ../../src/sass/style.scss */
 input {
   width: 100%;
   height: 45px;
@@ -38,73 +37,73 @@ input {
   font-size: 22px;
 }
 
-/* line 42, ../../src/sass/style.scss */
+/* line 41, ../../src/sass/style.scss */
 body {
   font-size: 16px;
   background: #bcd695;
   font-family: HelveticaNeue-Light, Helvetica Neue Light;
 }
 
-/* line 48, ../../src/sass/style.scss */
+/* line 47, ../../src/sass/style.scss */
 * {
   box-sizing: border-box;
   position: relative;
   outline: none;
 }
 
-/* line 54, ../../src/sass/style.scss */
+/* line 53, ../../src/sass/style.scss */
 .boy {
   color: #9cceff;
 }
 
-/* line 57, ../../src/sass/style.scss */
+/* line 56, ../../src/sass/style.scss */
 .girl {
   color: #ffbebe;
 }
 
-/* line 61, ../../src/sass/style.scss */
+/* line 60, ../../src/sass/style.scss */
 h1 {
   color: white;
   font-size: 60px;
 }
 
-/* line 66, ../../src/sass/style.scss */
+/* line 65, ../../src/sass/style.scss */
 #home {
   max-width: 62.5em !important;
   margin: 30px auto;
 }
-/* line 69, ../../src/sass/style.scss */
+/* line 68, ../../src/sass/style.scss */
 #home h2 {
   color: white;
 }
-/* line 73, ../../src/sass/style.scss */
+/* line 72, ../../src/sass/style.scss */
 #home .search_events .search_fields {
   padding: 0;
   margin: 0 -2px;
 }
-/* line 76, ../../src/sass/style.scss */
+/* line 75, ../../src/sass/style.scss */
 #home .search_events .search_fields > div {
   padding: 2px;
 }
-/* line 78, ../../src/sass/style.scss */
+/* line 77, ../../src/sass/style.scss */
 #home .search_events .search_fields > div input {
   padding: 5px;
 }
-/* line 84, ../../src/sass/style.scss */
+/* line 83, ../../src/sass/style.scss */
 #home #search_results_container {
   display: block;
   width: 100%;
   height: 0;
   z-index: 5;
 }
-/* line 89, ../../src/sass/style.scss */
+/* line 88, ../../src/sass/style.scss */
 #home #search_results_container .search_result {
   cursor: pointer;
   background: rgba(255, 255, 255, 0.8);
   padding: 10px;
 }
 
-/* line 98, ../../src/sass/style.scss */
+/* line 97, ../../src/sass/style.scss */
 #event_view {
   padding: 20px;
   margin: 0;
@@ -115,71 +114,71 @@ h1 {
   transition: background-color 1s;
 }
 @media (max-width: 767px) {
-  /* line 98, ../../src/sass/style.scss */
+  /* line 97, ../../src/sass/style.scss */
   #event_view {
     margin-top: 0 !important;
     top: 0 !important;
   }
 }
-/* line 107, ../../src/sass/style.scss */
+/* line 106, ../../src/sass/style.scss */
 #event_view.boy {
   background-color: #9cceff;
 }
-/* line 110, ../../src/sass/style.scss */
+/* line 109, ../../src/sass/style.scss */
 #event_view.girl {
   background-color: #ffbebe;
 }
-/* line 113, ../../src/sass/style.scss */
+/* line 112, ../../src/sass/style.scss */
 #event_view h1 {
   font-size: 53px;
   line-height: 60px;
   margin: 0 0 15px;
   color: white;
 }
-/* line 119, ../../src/sass/style.scss */
+/* line 118, ../../src/sass/style.scss */
 #event_view h2 {
   color: white;
   margin: 25px 0 5px;
 }
-/* line 123, ../../src/sass/style.scss */
+/* line 122, ../../src/sass/style.scss */
 #event_view .vote_count {
   font-size: 25px;
   background: rgba(255, 255, 255, 0.5);
   padding: 10px;
   text-align: center;
 }
-/* line 128, ../../src/sass/style.scss */
+/* line 127, ../../src/sass/style.scss */
 #event_view .vote_count .vote_number {
   font-size: 100px;
   text-shadow: 0 0 2px white;
 }
 @media (max-width: 1126px) {
-  /* line 128, ../../src/sass/style.scss */
+  /* line 127, ../../src/sass/style.scss */
   #event_view .vote_count .vote_number {
     font-size: 80px;
   }
 }
 @media (max-width: 920px) {
-  /* line 128, ../../src/sass/style.scss */
+  /* line 127, ../../src/sass/style.scss */
   #event_view .vote_count .vote_number {
     font-size: 56px;
   }
 }
-/* line 138, ../../src/sass/style.scss */
+/* line 137, ../../src/sass/style.scss */
 #event_view .vote_count .vote_result {
   padding-bottom: 30px;
   text-shadow: 0 0 2px white;
   font-size: 80px;
 }
-/* line 144, ../../src/sass/style.scss */
+/* line 143, ../../src/sass/style.scss */
 #event_view #event_info {
   margin: 0 0 20px;
 }
-/* line 149, ../../src/sass/style.scss */
+/* line 148, ../../src/sass/style.scss */
 #event_view #event_vote div {
   padding: 0;
 }
-/* line 152, ../../src/sass/style.scss */
+/* line 151, ../../src/sass/style.scss */
 #event_view #event_vote button {
   width: 100%;
   height: 80px;
@@ -190,32 +189,32 @@ h1 {
   -o-transition: background 0.3s;
   transition: background 0.3s;
 }
-/* line 158, ../../src/sass/style.scss */
+/* line 157, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_boy {
   background: #9cceff;
 }
-/* line 160, ../../src/sass/style.scss */
+/* line 159, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_boy:hover {
   background: #8dc6ff;
 }
-/* line 163, ../../src/sass/style.scss */
+/* line 162, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_boy:active {
   background: #83c1ff;
 }
-/* line 167, ../../src/sass/style.scss */
+/* line 166, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_girl {
   background: #ffbebe;
 }
-/* line 169, ../../src/sass/style.scss */
+/* line 168, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_girl:hover {
   background: #ffafaf;
 }
-/* line 172, ../../src/sass/style.scss */
+/* line 171, ../../src/sass/style.scss */
 #event_view #event_vote button.vote_girl:active {
   background: #ffa4a4;
 }
 
-/* line 180, ../../src/sass/style.scss */
+/* line 179, ../../src/sass/style.scss */
 #event_admin {
   max-width: 62.5em !important;
   margin: 0 auto;
@@ -223,26 +222,26 @@ h1 {
   min-height: 450px;
   background: rgba(255, 255, 255, 0.3);
 }
-/* line 186, ../../src/sass/style.scss */
+/* line 185, ../../src/sass/style.scss */
 #event_admin .title {
   text-align: right;
 }
-/* line 189, ../../src/sass/style.scss */
+/* line 188, ../../src/sass/style.scss */
 #event_admin .info_row {
   margin-top: 10px;
 }
 
-/* line 194, ../../src/sass/style.scss */
+/* line 193, ../../src/sass/style.scss */
 .text_right {
   text-align: right;
 }
 
-/* line 197, ../../src/sass/style.scss */
+/* line 196, ../../src/sass/style.scss */
 .padding-right-10 {
   padding-right: 10px;
 }
 
-/* line 201, ../../src/sass/style.scss */
+/* line 200, ../../src/sass/style.scss */
 #myChart, #homePageChart {
   width: 100% !important;
   height: auto !important;
